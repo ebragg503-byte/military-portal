@@ -107,7 +107,24 @@
             padding: 15px;
             border-radius: 6px;
             border: 1px solid rgba(241, 184, 21, 0.1);
+        }
+
+        /* المربع الجديد البديل لمربع النص */
+        .video-review-notice {
+            background-color: rgba(241, 184, 21, 0.03);
+            border: 1px dashed rgba(241, 184, 21, 0.2);
+            border-radius: 4px;
+            padding: 12px 15px;
+            color: #a3b3cc;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: -5px;
             margin-bottom: 10px;
+        }
+        .video-review-notice i {
+            color: var(--gold);
         }
 
         label {
@@ -201,7 +218,6 @@
             font-size: 14px;
         }
 
-        /* تنسيقات واجهة اختيار الفيديو الجديد */
         .video-selection-container {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(241, 184, 21, 0.15);
@@ -355,8 +371,8 @@
                     <input type="text" id="recruitName" required placeholder="اكتب اسم المتدرب كاملاً...">
                 </div>
                 <div class="form-group">
-                    <label>الرقم العسكري / الهوية</label>
-                    <input type="text" id="militaryId" required placeholder="ادخل الرقم العسكري...">
+                    <label>copy ID المتدرب</label>
+                    <input type="text" id="militaryId" required placeholder="مثال:771747917040058388...">
                 </div>
                 <div class="form-group">
                     <label>العمر</label>
@@ -380,32 +396,44 @@
                         <label>س: عرفني عن نفسك؟ (درجة واحدة)</label>
                         <input type="checkbox" class="custom-checkbox score-full" id="scoreQ0">
                     </div>
-                    <textarea id="qSelfIntro" placeholder="الاسم، الخبرات السابقة، سبب التقديم..."></textarea>
+                    <div class="video-review-notice">
+                        <i class="fa-solid fa-video"></i> سيتم مراجعة إجابة هذا السؤال في المقطع المرفق بالأسفل.
+                    </div>
                 </div>
+                
                 <div class="form-group full-width">
                     <div class="interview-row">
                         <label>س: ماذا تعرف عن الشرطة وواجباتها الميدانية الأساسية؟ (درجة واحدة)</label>
                         <input type="checkbox" class="custom-checkbox score-full" id="scoreQ1">
                     </div>
-                    <textarea id="qPoliceKnowledge" placeholder="ادخل تفاصيل إجابة المتدرب هنا..."></textarea>
+                    <div class="video-review-notice">
+                        <i class="fa-solid fa-video"></i> سيتم مراجعة إجابة هذا السؤال في المقطع المرفق بالأسفل.
+                    </div>
                 </div>
+                
                 <div class="form-group full-width">
                     <div class="interview-row">
                         <label>س: ما هي أقسام شرطة لوس سانتوس الرئيسية؟ (درجة واحدة)</label>
                         <input type="checkbox" class="custom-checkbox score-full" id="scoreQMainDepartments">
                     </div>
-                    <textarea id="qDepartments" placeholder="معرفة المتدرب بالأقسام والوحدات الميدانية..."></textarea>
+                    <div class="video-review-notice">
+                        <i class="fa-solid fa-video"></i> سيتم مراجعة إجابة هذا السؤال في المقطع المرفق بالأسفل.
+                    </div>
                 </div>
+                
                 <div class="form-group full-width">
                     <div class="interview-row">
                         <label>س: كيف تتصرف ميدانياً في حال تعرضت لاستفزاز لفظي أو ضغط نفسي أثناء الموقف؟ (درجة واحدة)</label>
                         <input type="checkbox" class="custom-checkbox score-full" id="scoreQ2">
                     </div>
-                    <textarea id="qPressureHandling" placeholder="قياس مدى الثبات الانفعالي وضبط النفس..."></textarea>
+                    <div class="video-review-notice">
+                        <i class="fa-solid fa-video"></i> سيتم مراجعة إجابة هذا السؤال في المقطع المرفق بالأسفل.
+                    </div>
                 </div>
+
                 <div class="form-group full-width">
-                    <label style="font-size: 16px; margin-bottom: 5px;"><i class="fa-solid fa-pen-to-square"></i> أسئلة إضافية من المدرب المقيِّم (اختياري)</label>
-                    <textarea id="qCustomTrainerQuestions" style="height: 120px;" placeholder="اكتب هنا أي أسئلة أخرى قمت بطرحها على المتدرب وملاحظاتك على إجابته..."></textarea>
+                    <label style="font-size: 16px; margin-bottom: 5px;"><i class="fa-solid fa-pen-to-square"></i> ملاحظات المدرب المقيِّم الإضافية (اختياري)</label>
+                    <textarea id="qCustomTrainerQuestions" style="height: 100px;" placeholder="اكتب هنا أي ملاحظات سريعة أخرى أو كودات إضافية ترغب بتدوينها للمركز الرئيسي..."></textarea>
                 </div>
             </div>
         </section>
@@ -492,13 +520,12 @@
                     <label>النتيجة العسكرية النهائية</label>
                     <select id="finalDecision">
                         <option value="قبول فوراً">مؤهل ميدانياً (قبول فوراً) 🟢</option>
-                        <option value="يحتاج إعادة دورة">يحتاج إعادة دورة الأكواد 🟡</option>
                         <option value="استبعاد نهائي">غير مؤهل للخدمة (استبعاد) 🔴</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>اسم المدرب المقيِّم</label>
-                    <input type="text" id="trainerName" required placeholder="اكتب اسمك هنا...">
+                    <label>copy ID المدرب </label>
+                    <input type="text" id="trainerName" required placeholder="اكتب Copy ID هنا...">
                 </div>
 
                 <div class="form-group full-width">
@@ -547,7 +574,6 @@
 </div>
 
 <script>
-    // وظيفة تبديل متطلبات الفيديو ديناميكيًا وحظر الإرسال بدونها
     function toggleVideoSource() {
         const selectedSource = document.querySelector('input[name="videoSource"]:checked').value;
         const linkWrapper = document.getElementById('videoLinkWrapper');
@@ -560,13 +586,13 @@
             fileWrapper.style.display = 'none';
             linkInput.required = true;
             fileInput.required = false;
-            fileInput.value = ""; // تفريغ الملف القديم لمنع اللبس
+            fileInput.value = ""; 
         } else {
             linkWrapper.style.display = 'none';
             fileWrapper.style.display = 'block';
             linkInput.required = false;
             fileInput.required = true;
-            linkInput.value = ""; // تفريغ الرابط القديم
+            linkInput.value = ""; 
         }
     }
 
@@ -599,7 +625,7 @@
             box.addEventListener('change', calculateTotalScore);
         });
         calculateTotalScore();
-        toggleVideoSource(); // لتهيئة الحقول المطلوبة عند تشغيل الصفحة فوراً
+        toggleVideoSource(); 
     });
 
     function showModal(title, text, iconHtml, isDone = false, isError = false) {
@@ -640,9 +666,8 @@
         const videoFile = document.getElementById('recruitVideoFile').files[0];
         const videoLink = document.getElementById('recruitVideoLink').value;
 
-        // فحص حجم الملف فوراً قبل الشروع بالإرسال لحماية النظام
         if (selectedSource === 'file' && videoFile) {
-            const maxAllowedSize = 25 * 1024 * 1024; // 25 ميغابايت
+            const maxAllowedSize = 25 * 1024 * 1024; 
             if (videoFile.size > maxAllowedSize) {
                 showModal(
                     "❌ فشل الإرسال (حجم ملف كبير)", 
@@ -655,173 +680,101 @@
             }
         }
 
-        // إظهار نافذة الانتظار داخل الموقع لحين الإرسال
         showModal(
             "جاري معالجة وإرسال التقرير...", 
             "يتم الآن تأمين البيانات ونقل التقرير وفيديو التقييم للرومات المطلوبة بالسيرفر الموحد. يرجى الانتظار وعدم الخروج من المتصفح...", 
             '<i class="fas fa-spinner fa-spin"></i>'
         );
 
-        const webhookUrl = "https://discord.com/api/webhooks/1517457951361601596/VNA8seKK276U_5QxuWbFDkAjprSeFkfzTB0MQJcrP5QSMPK5F2LzQEGSZz69-6FsKTyZ";
-        const videoWebhookUrl = "https://discord.com/api/webhooks/1517468901624123547/GDHrOoj8QYCquDiTVMkRVtoKt-byuZ2STZflo7RepETT6zsOtsNTpM_tTdEe56zH-k_F";
-
-        const rName = document.getElementById('recruitName').value;
-        const mId = document.getElementById('militaryId').value;
-        const rAge = document.getElementById('recruitAge').value || "غير محدد";
-        const rGender = document.getElementById('gender').value;
-        
-        const noteQ0 = document.getElementById('qSelfIntro').value || "لا توجد ملاحظات";
-        const noteQ1 = document.getElementById('qPoliceKnowledge').value || "لا توجد ملاحظات";
-        const noteQDep = document.getElementById('qDepartments').value || "لا توجد ملاحظات";
-        const noteQ2 = document.getElementById('qPressureHandling').value || "لا توجد ملاحظات";
-        const customTrainerQ = document.getElementById('qCustomTrainerQuestions').value || "لا توجد أسئلة مخصصة من المدرب";
-        
-        const decision = document.getElementById('finalDecision').value;
-        const tName = document.getElementById('trainerName').value;
-        const finalScore = calculateTotalScore();
+        // ضع رابط الويب هوك الخاص بروم الديسكورد هنا
+        const webhookUrl = "YOUR_DISCORD_WEBHOOK_URL_HERE";
 
         let masteredCodes = [];
-        let failedCodes = [];
-
         document.querySelectorAll('.score-full, .score-half').forEach(function(box) {
-            const codeName = box.getAttribute('data-name');
-            if (codeName) { 
-                if (box.checked) {
+            if (box.checked) {
+                const codeName = box.getAttribute('data-name');
+                if (codeName) {
                     masteredCodes.push(codeName);
-                } else {
-                    failedCodes.push(codeName);
                 }
             }
         });
 
-        const masteredText = masteredCodes.length > 0 ? masteredCodes.join(' ، ') : "لا يوجد";
-        const failedText = failedCodes.length > 0 ? failedCodes.join(' ، ') : "لا يوجد";
+        // رصد نقاط الأسئلة الأربعة التلقائية لتوضيحها في الويب هوك
+        const q0Mastered = document.getElementById('scoreQ0').checked ? "✔️ أتقن (1 د)" : "❌ لم يتقن (0 د)";
+        const q1Mastered = document.getElementById('scoreQ1').checked ? "✔️ أتقن (1 د)" : "❌ لم يتقن (0 د)";
+        const qMainMastered = document.getElementById('scoreQMainDepartments').checked ? "✔️ أتقن (1 د)" : "❌ لم يتقن (0 د)";
+        const q2Mastered = document.getElementById('scoreQ2').checked ? "✔️ أتقن (1 د)" : "❌ لم يتقن (0 د)";
 
-        let embedColor = 15839253; 
-        if(decision.includes("قبول")) embedColor = 1094193; 
-        if(decision.includes("استبعاد")) embedColor = 15548997; 
+        const totalScore = calculateTotalScore();
+        const recruitName = document.getElementById('recruitName').value;
+        const militaryId = document.getElementById('militaryId').value;
+        const recruitAge = document.getElementById('recruitAge').value || "غير محدد";
+        const genderValue = document.getElementById('gender').value;
+        const finalDecision = document.getElementById('finalDecision').value;
+        const trainerName = document.getElementById('trainerName').value;
+        const qCustomTrainerQuestions = document.getElementById('qCustomTrainerQuestions').value || "لا يوجد ملاحظات إضافية";
 
-        // إضافة توضيح لنوع إرفاق الفيديو بداخل التقرير المكتوب لتسجيل البيانات
-        const videoAttachedInfo = selectedSource === 'link' ? `🔗 [رابط خارجي مستند بالتقرير]:\n${videoLink}` : `💾 ملف مرفوع مباشرة للروم الثاني وحجمه (${(videoFile.size / (1024*1024)).toFixed(1)}MB)`;
-
-        const interviewText = 
-            "**س1 (التعريف بالنفس):** " + (document.getElementById('scoreQ0').checked ? "أتقن (1/1)" : "لم يتقن (0/1)") + "\n**الوصف:** " + noteQ0 + "\n\n" +
-            "**س2 (واجبات الشرطة):** " + (document.getElementById('scoreQ1').checked ? "أتقن (1/1)" : "لم يتقن (0/1)") + "\n**الوصف:** " + noteQ1 + "\n\n" +
-            "**س3 (أقسام لوس سانتوس):** " + (document.getElementById('scoreQMainDepartments').checked ? "أتقن (1/1)" : "لم يتقن (0/1)") + "\n**الوصف:** " + noteQDep + "\n\n" +
-            "**س4 (الثبات الانفعالي):** " + (document.getElementById('scoreQ2').checked ? "أتقن (1/1)" : "لم يتقن (0/1)") + "\n**الوصف:** " + noteQ2 + "\n\n" +
-            "**📝 أسئلة المدرب الإضافية وملاحظاته:**\n" + customTrainerQ + "\n\n" +
-            "**🎬 حالة فيديو التقييم:** " + videoAttachedInfo;
-
-        const discordPayload = {
-            username: "نظام إدارة التقييم الميداني المركزي",
-            avatar_url: "https://i.imgur.com/4SshZtB.png",
-            embeds: [{
-                title: "📋 تقرير تقييم عسكري موحد وشامل",
-                color: embedColor,
-                fields: [
-                    { name: "🪖 بيانات المجند", value: "**الاسم:** " + rName + "\n**الرقم العسكري:** " + mId + "\n**العمر:** " + rAge + "\n**الجنس:** " + rGender, inline: true },
-                    { name: "⚖️ القرار والدرجة", value: "**القرار:** " + decision + "\n**الدرجة الإجمالية المستحقة:** " + finalScore + " / 20\n**المدرب المقيِّم:** " + tName, inline: true },
-                    { name: "💬 المقابلة الشخصية والوعي الأمني", value: interviewText, inline: false },
-                    { name: "🟢 الأكواد والبروتوكولات المتقنة", value: masteredText, inline: false },
-                    { name: "🔴 أكواد لم يتقنها المجند", value: failedText, inline: false }
-                ],
-                footer: { text: "قيادة التدريب العسكري والعمليات الميدانية // التحديث الفوري للنتائج السنوية" },
-                timestamp: new Date().toISOString()
-            }]
+        const discordEmbed = {
+            title: "📊 تقرير تقييم وقبول مجند جديد",
+            color: finalDecision.includes("قبول") ? 65280 : 16711680, 
+            fields: [
+                { name: "👤 اسم المتدرب", value: recruitName, inline: true },
+                { name: "🪪 ID المتدرب", value: militaryId, inline: true },
+                { name: "🎂 العمر", value: recruitAge, inline: true },
+                { name: "🧬 الجنس", value: genderValue, inline: true },
+                { name: "👑 المدرب المقيّم (ID)", value: trainerName, inline: true },
+                { name: "💯 الدرجة الإجمالية", value: `${totalScore} / 31`, inline: true },
+                { name: "📋 النتيجة النهائية", value: `**${finalDecision}**`, inline: false },
+                { name: "💬 تقييم الأسئلة الشفهية (المراجعة بالمقطع)", value: `• **عرفني عن نفسك:** ${q0Mastered}\n• **واجبات الشرطة الميدانية:** ${q1Mastered}\n• **أقسام لوس سانتوس:** ${qMainMastered}\n• **ضبط النفس والثبات:** ${q2Mastered}`, inline: false },
+                { name: "📝 ملاحظات المدرب الإضافية", value: qCustomTrainerQuestions, inline: false },
+                { name: "📡 بروتوكولات الكودات التي أتقنها", value: masteredCodes.length > 0 ? masteredCodes.join(', ') : "لم يتقن أي كود من الجداول", inline: false },
+                { name: "🔗 توثيق الفيديو المرفق", value: videoLink || "🎥 تم رفع ملف فيديو مباشر مع التقرير", inline: false }
+            ],
+            footer: { text: "نظام إدارة التدريب والعمليات الميدانية الرقمي // سري للغاية" },
+            timestamp: new Date()
         };
 
-        // الخطوة 1: إرسال التقرير النصي للروم الموحد الأول
+        const formData = new FormData();
+
+        if (selectedSource === 'file' && videoFile) {
+            formData.append('files[0]', videoFile, videoFile.name);
+        }
+
+        formData.append('payload_json', JSON.stringify({
+            embeds: [discordEmbed]
+        }));
+
         fetch(webhookUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(discordPayload)
+            method: 'POST',
+            body: formData
         })
-        .then(function(response) {
+        .then(response => {
             if (response.ok) {
-                
-                // الخطوة 2: التعامل مع إرسال الفيديو للروم الثاني بناء على طريقة الإرفاق
-                if (selectedSource === 'file' && videoFile) {
-                    // الرفع كملف ثنائي مباشر
-                    const videoFormData = new FormData();
-                    videoFormData.append('file', videoFile);
-                    videoFormData.append('content', `🎥 **فيديو التقييم الميداني التابع للمجند:** ${rName} (رقم عسكري: ${mId})\n**بإشراف المدرب:** ${tName}`);
-
-                    fetch(videoWebhookUrl, {
-                        method: "POST",
-                        body: videoFormData
-                    })
-                    .then(function(videoResponse) {
-                        if (videoResponse.ok) {
-                            showModal(
-                                "🟢 تم إرسال التقرير والملف المرفق بنجاح!", 
-                                `تم تسليم التقرير العسكري بنجاح:\n1. التقرير النصي الشامل وصل إلى الروم الأول.\n2. ملف وثيقة الفيديو المرفوع تم إرساله بنجاح للروم الثاني.\n\nدرجة المجند الإجمالية: (${finalScore} / 20).`, 
-                                '<i class="fas fa-check-circle"></i>', 
-                                true
-                            );
-                            document.getElementById('evaluationForm').reset();
-                            calculateTotalScore();
-                            toggleVideoSource();
-                        } else {
-                            showModal(
-                                "⚠️ تم إرسال التقرير النصي، وفشل رفع ملف الفيديو!", 
-                                "التقرير النصي وصل بنجاح للروم المخصص، ولكن ديسكورد رفض استقبال ملف الفيديو. تأكد من جودة وصيغة الفيديو.", 
-                                '<i class="fas fa-exclamation-circle"></i>', 
-                                true
-                            );
-                        }
-                    })
-                    .catch(function(err) {
-                        console.error(err);
-                        showModal("❌ خطأ شبكة أثناء الرفع", "وصل التقرير النصي، ولكن تعذر إتمام رفع الفيديو للروم الثاني بسبب مشكلة بالاتصال.", '<i class="fas fa-times-circle"></i>', true, true);
-                    });
-
-                } else if (selectedSource === 'link' && videoLink) {
-                    // الرفع كرابط خارجي نصي إلى روم الفيديو الثاني
-                    const linkPayload = {
-                        username: "نظام إدارة التقييم الميداني المركزي",
-                        content: `🎥 **رابط فيديو التقييم التابع للمجند:** ${rName} (رقم عسكري: ${mId})\n**بإشراف المدرب:** ${tName}\n🔗 **رابط المقطع:** ${videoLink}`
-                    };
-
-                    fetch(videoWebhookUrl, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(linkPayload)
-                    })
-                    .then(function(linkResponse) {
-                        if (linkResponse.ok) {
-                            showModal(
-                                "🟢 تم إرسال التقرير والرابط بنجاح!", 
-                                `تم تسليم البيانات بنجاح وعرضها داخل السيرفر:\n1. التقرير النصي في الروم المخصص للنتائج.\n2. رابط الفيديو المرفق تم إرساله بنجاح كرسالة للروم الثاني المخصص للوسائط.\n\nدرجة المجند الإجمالية: (${finalScore} / 20).`, 
-                                '<i class="fas fa-check-circle"></i>', 
-                                true
-                            );
-                            document.getElementById('evaluationForm').reset();
-                            calculateTotalScore();
-                            toggleVideoSource();
-                        } else {
-                            showModal(
-                                "⚠️ التقرير أُرسل، وفشل ربط الفيديو بالروم الثاني!", 
-                                "وصل التقرير النصي للروم الأول بنجاح، لكن فشل إرسال الرابط للروم الثاني.", 
-                                '<i class="fas fa-exclamation-circle"></i>', 
-                                true
-                            );
-                        }
-                    })
-                    .catch(function(err) {
-                        console.error(err);
-                        showModal("❌ خطأ بالشبكة", "تعذر تسليم رابط المقطع للروم الثاني نتيجة لخطأ غير متوقع بالاتصال.", '<i class="fas fa-times-circle"></i>', true, true);
-                    });
-                }
+                showModal(
+                    "✅ تم إرسال التقرير بنجاح", 
+                    "تم توثيق كافة البيانات العسكرية ورفعها بنظام الأرشيف المركزي الموحد بنجاح.", 
+                    '<i class="fas fa-check-circle"></i>', 
+                    true, 
+                    false
+                );
+                document.getElementById('evaluationForm').reset();
+                calculateTotalScore();
+                toggleVideoSource();
             } else {
-                showModal("❌ فشل إرسال التقرير", "لم يستقبل سيرفر ديسكورد البيانات النصية العسكرية، يرجى التحقق من جودة الـ Webhook الخاص بك.", '<i class="fas fa-times-circle"></i>', true, true);
+                throw new Error("فشل إرسال البيانات.");
             }
         })
-        .catch(function(error) {
+        .catch(error => {
             console.error(error);
-            showModal("❌ حدث خطأ داخلي بالنظام", "تعذر الاتصال بالخادم، يرجى التأكد من اتصالك بالشبكة وإعادت المحاولة.", '<i class="fas fa-times-circle"></i>', true, true);
+            showModal(
+                "❌ فشل إرسال التقرير", 
+                "حدث خطأ أثناء الاتصال بالسيرفر الرئيسي، تأكد من إعدادات الويب هوك المضافة في الكود.", 
+                '<i class="fas fa-times-circle"></i>', 
+                true, 
+                true
+            );
         });
     });
 </script>
-
 </body>
 </html>
