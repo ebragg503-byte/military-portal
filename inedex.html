@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>بوابة تقييم وقبول المجندين</title>
+				<link rel="preconnect" href="https://fonts.googleapis.com">
+					<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+						<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700&family=Urbanist:wght@600;700&display=swap" rel="stylesheet">
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+								<style>
+									:root {
+									--bg-dark: #070c14;
+									--card-bg: rgba(11, 19, 32, 0.95);
+									--grid-color: rgba(30, 41, 59, 0.4);
+									--gold: #f1b815;
+									--white: #ffffff;
+									--text-muted: #94a3b8;
+									--border-color: rgba(241, 184, 21, 0.2);
+									--accent-green: #10b981;
+									--accent-red: #ef4444;
+									--row-even: rgba(15, 28, 48, 0.4);
+									--row-odd: rgba(22, 42, 69, 0.2);
+									}
+
+									* {
+									box-sizing: border-box;
+									margin: 0;
+									padding: 0;
+									}
+
+									body {
+									background-color: var(--bg-dark);
+									background-image:
+									linear-gradient(var(--grid-color) 1px, transparent 1px),
+									linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+									background-size: 40px 40px;
+									font-family: 'Noto Sans Arabic', sans-serif;
+									color: var(--white);
+									padding: 50px 20px;
+									}
+
+									.container {
+									max-width: 1200px;
+									margin: 0 auto;
+									background-color: var(--card-bg);
+									border: 1px solid var(--border-color);
+									border-radius: 8px;
+									padding: 50px;
+									box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+									}
+
+									header {
+									text-align: center;
+									margin-bottom: 60px;
+									border-bottom: 2px solid var(--gold);
+									padding-bottom: 30px;
+									}
+
+									header h1 {
+									font-size: 42px;
+									color: var(--gold);
+									font-weight: 700;
+									margin-bottom: 15px;
+									}
+
+									header p {
+									color: var(--text-muted);
+									font-size: 18px;
+									letter-spacing: 2px;
+									}
+
+									section {
+									margin-bottom: 60px;
+									}
+
+									section h2 {
+									font-size: 26px;
+									color: var(--gold);
+									margin-bottom: 30px;
+									border-right: 5px solid var(--gold);
+									padding-right: 15px;
+									}
+
+									.form-grid {
+									display: grid;
+									grid-template-columns: repeat(2, 1fr);
+									gap: 25px;
+									}
+
+									.form-group {
+									display: flex;
+									flex-direction: column;
+									gap: 10px;
+									}
+
+									.form-group.full-width {
+									grid-column: span 2;
+									}
+
+									.interview-row {
+									display: flex;
+									align-items: center;
+									justify-content: space-between;
+									background: rgba(255, 255, 255, 0.02);
+									padding: 15px;
+									border-radius: 6px;
+									border: 1px solid rgba(241, 184, 21, 0.1);
+									}
+
+									.video-review-notice {
+									background-color: rgba(241, 184, 21, 0.03);
+									border: 1px dashed rgba(241, 184, 21, 0.2);
+									border-radius: 4px;
+									padding: 12px 15px;
+									color: #a3b3cc;
+									font-size: 14px;
+									display: flex;
+									align-items: center;
+									gap: 10px;
+									margin-top: -5px;
+									margin-bottom: 10px;
+									}
+									.video-review-notice i {
+									color: var(--gold);
+									}
+
+									label {
+									font-size: 15px;
+									color: var(--gold);
+									font-weight: 500;
+									}
+
+									input[type="text"], input[type="number"], input[type="file"], select, textarea {
+									background-color: rgba(255, 255, 255, 0.04);
+									border: 1px solid rgba(255, 255, 255, 0.1);
+									border-radius: 4px;
+									padding: 15px;
+									color: var(--white);
+									font-size: 16px;
+									font-family: inherit;
+									width: 100%;
+									}
+
+									input[type="file"] {
+									cursor: pointer;
+									}
+
+									input:focus, select:focus, textarea:focus {
+									outline: none;
+									border-color: var(--gold);
+									background-color: rgba(255, 255, 255, 0.08);
+									}
+
+									table {
+									width: 100%;
+									border-collapse: collapse;
+									margin-top: 20px;
+									margin-bottom: 40px;
+									}
+
+									th, td {
+									border: 1px solid rgba(255, 255, 255, 0.08);
+									padding: 14px 18px;
+									text-align: right;
+									}
+
+									th {
+									background-color: #0f1c30;
+									color: var(--gold);
+									font-weight: 700;
+									}
+
+									tr:nth-child(even) { background-color: var(--row-even); }
+									tr:nth-child(odd) { background-color: var(--row-odd); }
+
+									.code-tag {
+									background-color: rgba(241, 184, 21, 0.15);
+									color: var(--gold);
+									padding: 4px 10px;
+									border-radius: 4px;
+									font-weight: bold;
+									font-family: 'Urbanist', sans-serif;
+									}
+
+									.check-container {
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									}
+
+									.custom-checkbox {
+									appearance: none;
+									width: 26px;
+									height: 26px;
+									border: 2px solid var(--gold);
+									border-radius: 4px;
+									cursor: pointer;
+									position: relative;
+									transition: all 0.2s;
+									}
+
+									.custom-checkbox:checked {
+									background-color: var(--accent-green);
+									border-color: var(--accent-green);
+									}
+
+									.custom-checkbox:checked::after {
+									content: '\f00c';
+									font-family: 'Font Awesome 6 Free';
+									font-weight: 900;
+									color: white;
+									position: absolute;
+									top: 50%; left: 50%;
+									transform: translate(-50%, -50%);
+									font-size: 14px;
+									}
+
+									.video-selection-container {
+									background: rgba(255, 255, 255, 0.02);
+									border: 1px solid rgba(241, 184, 21, 0.15);
+									padding: 20px;
+									border-radius: 6px;
+									margin-top: 10px;
+									}
+
+									.radio-group {
+									display: flex;
+									gap: 30px;
+									margin-bottom: 15px;
+									}
+
+									.radio-label {
+									display: flex;
+									align-items: center;
+									gap: 10px;
+									cursor: pointer;
+									font-size: 16px;
+									color: var(--white);
+									}
+
+									.radio-label input[type="radio"] {
+									accent-color: var(--gold);
+									width: 18px;
+									height: 18px;
+									}
+
+									.video-input-wrapper {
+									margin-top: 10px;
+									}
+
+									.warning-note {
+									color: var(--accent-red);
+									font-size: 13px;
+									margin-top: 5px;
+									display: flex;
+									align-items: center;
+									gap: 5px;
+									font-weight: 500;
+									}
+
+									.score-box {
+									background: rgba(241, 184, 21, 0.08);
+									border: 2px dashed var(--gold);
+									padding: 25px;
+									border-radius: 6px;
+									text-align: center;
+									margin: 30px 0;
+									}
+
+									.score-value {
+									font-size: 36px;
+									font-weight: 700;
+									color: var(--gold);
+									margin-top: 10px;
+									}
+
+									.submit-area {
+									text-align: center;
+									margin-top: 50px;
+									padding-top: 30px;
+									border-top: 1px solid rgba(255, 255, 255, 0.1);
+									}
+
+									.btn-submit {
+									background-color: var(--gold);
+									color: #000000;
+									border: none;
+									padding: 18px 60px;
+									font-size: 20px;
+									font-weight: 700;
+									border-radius: 4px;
+									cursor: pointer;
+									transition: all 0.3s;
+									}
+
+									.btn-submit:hover {
+									background-color: #dca613;
+									transform: translateY(-2px);
+									box-shadow: 0 10px 25px rgba(241, 184, 21, 0.3);
+									}
+
+									.status-modal {
+									display: none;
+									position: fixed;
+									top: 0; left: 0; width: 100%; height: 100%;
+									background: rgba(0, 0, 0, 0.85);
+									z-index: 10000;
+									justify-content: center;
+									align-items: center;
+									}
+
+									.status-content {
+									background: #0f1c30;
+									border: 2px solid var(--gold);
+									padding: 40px;
+									border-radius: 8px;
+									text-align: center;
+									max-width: 500px;
+									width: 90%;
+									box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+									}
+
+									.status-icon {
+									font-size: 50px;
+									margin-bottom: 20px;
+									color: var(--gold);
+									}
+
+									.status-title {
+									font-size: 24px;
+									font-weight: 700;
+									margin-bottom: 10px;
+									}
+
+									.status-text {
+									color: var(--text-muted);
+									font-size: 16px;
+									line-height: 1.6;
+									margin-bottom: 25px;
+									}
+
+									.status-btn {
+									background: var(--gold);
+									color: black;
+									border: none;
+									padding: 10px 30px;
+									font-size: 16px;
+									font-weight: 700;
+									border-radius: 4px;
+									cursor: pointer;
+									}
+								</style>
+							</head>
+	<body>
+
+		<div class="container">
+			<header>
+				<h1>بوابة تقييم وقبول المجندين</h1>
+				<p>Los Santos Police Academy // سري للغاية</p>
+			</header>
+
+			<form id="evaluationForm">
+				<section>
+					<h2>01. البيانات الشخصية للمتقدم</h2>
+					<div class="form-grid">
+						<div class="form-group">
+							<label>اسم المتقدم</label>
+							<input type="text" id="recruitName" required="" placeholder="اكتب اسم المتقدم...">
+                </div>
+						<div class="form-group">
+							<label>copy ID المتقدم</label>
+							<input type="text" id="militaryId" required="" placeholder="مثال:771747917040058388...">
+                </div>
+						<div class="form-group">
+							<label>العمر</label>
+							<input type="number" id="recruitAge" placeholder="مثال: 23">
+                </div>
+						<div class="form-group">
+							<label>الجنس</label>
+							<select id="gender">
+								<option value="ذكر">ذكر</option>
+								<option value="أنثى">أنثى</option>
+							</select>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>02. أسئلة المقابلة الشخصية والوعي الأمني</h2>
+					<div class="form-grid">
+						<div class="form-group full-width">
+							<div class="interview-row">
+								<label>س: عرفني عن نفسك؟ (0.5 درجة)</label>
+								<input type="checkbox" class="custom-checkbox score-half" id="scoreQ0">
+                    </div>
+							<div class="video-review-notice">
+								<i class="fa-solid fa-video"></i> سيتم مراجعة إجابة هذا السؤال في المقطع المرفق بالأسفل.
+							</div>
+						</div>
+
+						<div class="form-group full-width">
+							<div class="interview-row">
+								<label>س: ماذا تعرف عن الشرطة وواجباتها الميدانية الأساسية؟ (0.5 درجة)</label>
+								<input type="checkbox" class="custom-checkbox score-half" id="scoreQ1">
+                    </div>
+							<div class="video-review-notice">
+								<i class="fa-solid fa-video"></i> سيتم مراجعة إجابة هذا السؤال في المقطع المرفق بالأسفل.
+							</div>
+						</div>
+
+						<div class="form-group full-width">
+							<div class="interview-row">
+								<label>س: ما هي أقسام شرطة لوس سانتوس الرئيسية؟ (0.5 درجة)</label>
+								<input type="checkbox" class="custom-checkbox score-half" id="scoreQMainDepartments">
+                    </div>
+							<div class="video-review-notice">
+								<i class="fa-solid fa-video"></i> سيتم مراجعة إجابة هذا السؤال في المقطع المرفق بالأسفل.
+							</div>
+						</div>
+
+						<div class="form-group full-width">
+							<div class="interview-row">
+								<label>س: كيف تتصرف ميدانياً في حال تعرضت لاستفزاز لفظي أو ضغط نفسي أثناء الموقف؟ (0.5 درجة)</label>
+								<input type="checkbox" class="custom-checkbox score-half" id="scoreQ2">
+                    </div>
+							<div class="video-review-notice">
+								<i class="fa-solid fa-video"></i> سيتم مراجعة إجابة هذا السؤال في المقطع المرفق بالأسفل.
+							</div>
+						</div>
+
+						<div class="form-group full-width">
+							<label style="font-size: 16px; margin-bottom: 5px;">
+								<i class="fa-solid fa-pen-to-square"></i> ملاحظات المدرب المقيِّم الإضافية (اختياري)
+							</label>
+							<textarea id="qCustomTrainerQuestions" style="height: 100px;" placeholder="اكتب هنا أي ملاحظات سريعة أخرى أو كودات إضافية ترغب بتدوينها للمركز الرئيسي..."></textarea>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>03. اختبار بروتوكولات اللاسلكي (Codes)</h2>
+					<table>
+						<thead>
+							<tr>
+								<th style="width: 12%;">Protocol</th>
+								<th style="width: 30%;">Pronunciation method</th>
+								<th>Meaning</th>
+								<th>Example</th>
+								<th style="width: 10%; text-align: center;">إتقان</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span class="code-tag">Code 0</span>
+								</td>
+								<td>عموم الوحدات تتوجه للحاله (استنفار امني)</td>
+								<td>عموم الوحدات تتوجه للحاله (استنفار امني)</td>
+								<td>ديسباتش لعموم الوحدات Code 0</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="Code 0">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">Code 1</span>
+								</td>
+								<td>بدون نور وصوت</td>
+								<td>بدون نور وصوت</td>
+								<td>-</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="Code 1">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">Code 2</span>
+								</td>
+								<td>مع نور ولكن بدون صوت السفتي</td>
+								<td>مع نور ولكن بدون صوت السفتي</td>
+								<td>-</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="Code 2">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">Code 3</span>
+								</td>
+								<td>مع نور وصوت السفتي</td>
+								<td>مع نور وصوت السفتي</td>
+								<td>-</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="Code 3">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">Code 4</span>
+								</td>
+								<td>المكان امن وخالي</td>
+								<td>المكان امن وخالي</td>
+								<td>( يونت ) تو ديسباتش لاست شوت فاير Code 4</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="Code 4">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">Code 6</span>
+								</td>
+								<td>جاري التحقق من المكان او الحاله وتفتيش المنطقه</td>
+								<td>جاري التحقق من المكان او الحاله وتفتيش المنطقه</td>
+								<td>( يونت ) تو ديسباتش لاست شوت فاير Code 6 حاليا</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="Code 6">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">Code 7</span>
+								</td>
+								<td>مسح البصمات وتصوير مسرح الجريمة ورفع تقرير</td>
+								<td>مسح البصمات وتصوير مسرح الجريمة ورفع تقرير</td>
+								<td>( يونت ) تو ديسباتش لاست Code7</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="Code 7">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">0-1</span>
+								</td>
+								<td>استراحه او تسجيل خروج مؤقت لمحة 10 دقائق</td>
+								<td>استراحه او تسجيل خروج مؤقت</td>
+								<td>( يونت ) تو ديسباتش 1-0 لمحة 10 دقائق</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="0-1">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">0-2</span>
+								</td>
+								<td>الاشاره واضحه</td>
+								<td>الاشاره واضحه</td>
+								<td>ديسباتش تو ( يونت ) 3-0 , 2-0</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="0-2">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">0-3</span>
+								</td>
+								<td>التاكد من اشارة الراديو</td>
+								<td>التاكد من اشارة الراديو</td>
+								<td>( يونت ) تو ديسباتش 3-0</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="0-3">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">0-4</span>
+								</td>
+								<td>الغ البلاغ</td>
+								<td>الغ البلاغ</td>
+								<td>( يونت ) تو ديسباتش 4-0 اخر بلاغ</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="0-4">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">0-5</span>
+								</td>
+								<td>الشرطي مشغول</td>
+								<td>الشرطي مشغول</td>
+								<td>( يونت ) تو ديسباتش 5-0 يوجد لدي حالة</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="0-5">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">0-6</span>
+								</td>
+								<td>كرر البلاغ</td>
+								<td>كرر البلاغ</td>
+								<td>( يونت ) تو ديسباتش 6-0 اخر بلاغ</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="0-6">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">0-7</span>
+								</td>
+								<td>تسجيل خروج</td>
+								<td>تسجيل خروج</td>
+								<td>( يونت ) تو ديسباتش 7-0</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="0-7">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">0-8</span>
+								</td>
+								<td>تسجيل دخول</td>
+								<td>تسجيل دخول</td>
+								<td>( يونت ) تو ديسباتش 8-0 توجيهاتك</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="0-8">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+				</section>
+
+
+
+				<section>
+					<h2>04. اختبار بروتوكولات البلاغات الجنائية (10-Codes)</h2>
+					<table>
+						<thead>
+							<tr>
+								<th style="width: 12%;">Protocol</th>
+								<th style="width: 30%;">Pronunciation method</th>
+								<th>Meaning</th>
+								<th>Example</th>
+								<th style="width: 10%; text-align: center;">إتقان</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span class="code-tag">10-0</span>
+								</td>
+								<td>تّن zero</td>
+								<td>الشرطي بحاجه لمسعف</td>
+								<td>( يونت ) تو ديسباتش 0-10 يتوجه لموجة 5</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="10-0">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-1</span>
+								</td>
+								<td>تّن - ون</td>
+								<td>مطاردة مركبة</td>
+								<td>( يونت ) تو ديسباتش 1-10 مع ( مواصفات المركبه )</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="10-1">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-2</span>
+								</td>
+								<td>تّن - تو</td>
+								<td>غير صحيح</td>
+								<td>-</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="10-2">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-3</span>
+								</td>
+								<td>تّن - thry</td>
+								<td>استيقاف مروري</td>
+								<td>( يونت ) تو ديسباتش 3-10 مع ( مواصفات المركبه والموقع )</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="10-3">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-4</span>
+								</td>
+								<td>تّن - فور</td>
+								<td>علم</td>
+								<td>-</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="10-4">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-5</span>
+								</td>
+								<td>تّن - فايف</td>
+								<td>سرقة سياره (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش امامي حالة 5-10 احتاج 23-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-5">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-6</span>
+								</td>
+								<td>تّن - سكس</td>
+								<td>سرقة منزل (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 6-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-6">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-7</span>
+								</td>
+								<td>تّن - سفن</td>
+								<td>سرقة بقاله (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 7-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-7">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-8</span>
+								</td>
+								<td>تّن - ايت</td>
+								<td>سرقة ATM (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 8-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-8">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-9</span>
+								</td>
+								<td>تّن - ناين</td>
+								<td>سرقة Laundromat (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 9-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-9">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-10</span>
+								</td>
+								<td>تّن - تّن</td>
+								<td>سرقة Digital-Den (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 10-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-10">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-11</span>
+								</td>
+								<td>تّن - الفن</td>
+								<td>سرقة Cash-Exchange (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 11-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-11">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-12</span>
+								</td>
+								<td>تّن - تويلف</td>
+								<td>سرقة Blaine-County (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 12-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-12">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-13</span>
+								</td>
+								<td>تّن - ثيرتين</td>
+								<td>سرقة Truck Robbery (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 13-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-13">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-14</span>
+								</td>
+								<td>تّن - فورتين</td>
+								<td>سرقة Jewelry Store (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 14-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-14">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-15</span>
+								</td>
+								<td>تّن - ففتين</td>
+								<td>سرقة Maze Bank Robbery (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 15-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-15">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-16</span>
+								</td>
+								<td>تّن - سكستين</td>
+								<td>سرقة Fleeca Bank Robbery (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 16-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-16">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-17</span>
+								</td>
+								<td>تّن - سفنتين</td>
+								<td>سرقة Bobcat Robbery (0.5 درجة)</td>
+								<td>( يونت ) تو ديسباتش يوجد 17-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-half" data-name="10-17">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-19</span>
+								</td>
+								<td>تّن - نايتنيّن</td>
+								<td>مطاردة على الاقدام</td>
+								<td>( يونت ) تو ديسباتش لاست 1-10 تحولت 19-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="10-19">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-20</span>
+								</td>
+								<td>تّن - توينتي</td>
+								<td>موقعك</td>
+								<td>( يونت ) تو ديسباتش 20-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="10-20">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="code-tag">10-23</span>
+								</td>
+								<td>تّن - توينتي ثري</td>
+								<td>احتاج دعم</td>
+								<td>( يونت ) تو ديسباتش احتاج 23-10 لاست 1-10</td>
+								<td class="check-container">
+									<input type="checkbox" class="custom-checkbox score-full" data-name="10-23">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<section>
+						<h2>05. الاختبار الميداني</h2>
+						<div class="form-grid">
+							<div class="form-group full-width">
+								<div class="interview-row">
+									<label>الاستيقاف المروري (3 درجة)</label>
+									<input type="checkbox" class="custom-checkbox score-field" id="fieldTrafficStop">
+								</div>
+							</div>
+							<div class="form-group full-width">
+								<div class="interview-row">
+									<label>الاستيقاف الجنائي (3 درجة)</label>
+									<input type="checkbox" class="custom-checkbox score-field" id="fieldFelonyStop">
+								</div>
+							</div>
+							<div class="form-group full-width">
+								<div class="interview-row">
+									<label>المطاردة والصدم الاحترافي (3 درجة)</label>
+									<input type="checkbox" class="custom-checkbox score-field" id="fieldPursuit">
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<h2>06. قرار المدرب النهائي والاعتماد</h2>
+						<div class="score-box">
+							<p>الدرجة المستحقة الإجمالية للمجند (المطلوب للقبول: 30 أو أكثر):</p>
+							<div class="score-value" id="liveScore">0</div>
+						</div>
+
+						<div class="form-grid">
+							<div class="form-group">
+								<label>النتيجة العسكرية النهائية</label>
+								<select id="finalDecision">
+									<option value="قبول فوراً">مؤهل ميدانياً (قبول فوراً) 🟢</option>
+									<option value="استبعاد نهائي">غير مؤهل للخدمة (استبعاد) 🔴</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>copy ID المدرب المسؤل </label>
+								<input type="text" id="trainerName" required="" placeholder="اكتب Copy ID هنا...">
+                </div>
+
+							<div class="form-group full-width">
+								<label>
+									<i class="fa-solid fa-video"></i> آلية إرفاق وثائق وفيديو التقييم الميداني (إجباري)
+								</label>
+								<div class="video-selection-container">
+									<div class="radio-group">
+										<label class="radio-label">
+											<input type="radio" name="videoSource" value="link" checked="" onchange="toggleVideoSource()">
+                                🔗 تزويد برابط فيديو خارجي
+                            </label>
+										<label class="radio-label">
+											<input type="radio" name="videoSource" value="file" onchange="toggleVideoSource()">
+                                💾 رفع ملف فيديو مباشر من الجهاز
+                            </label>
+									</div>
+
+									<div id="videoLinkWrapper" class="video-input-wrapper">
+										<input type="text" id="recruitVideoLink" required="" placeholder="ضع هنا رابط مقطع التقييم (يوتيوب، ديسكورد، مواقع رفع...)">
+                        </div>
+
+									<div id="videoFileWrapper" class="video-input-wrapper" style="display: none;">
+										<input type="file" id="recruitVideoFile" accept="video/*">
+											<div class="warning-note">
+												<i class="fa-solid fa-triangle-exclamation"></i>
+												تنبيه عسكري هائل: الحد الأقصى للملف هو 25 ميغابايت فقط! تجاوز هذا الحجم يمنع الإرسال.
+											</div>
+										</div>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<div class="submit-area">
+						<button type="submit" class="btn-submit">حفظ وإرسال التقرير للمركز الرئيسي</button>
+					</div>
+				</form>
+		</div>
+
+		<div class="status-modal" id="statusModal">
+			<div class="status-content">
+				<div class="status-icon" id="modalIcon">
+					<i class="fas fa-spinner fa-spin"></i>
+				</div>
+				<div class="status-title" id="modalTitle">جاري معالجة البيانات...</div>
+				<div class="status-text" id="modalText">يتم الآن رفع التقارير العسكرية وتجهيز وسائط الفيديو للإرسال إلى السيرفر الرئيسي الموحد. يرجى الانتظار وعدم إغلاق الصفحة.</div>
+				<button class="status-btn" id="modalBtn" style="display:none;" onclick="closeModal()">إغلاق</button>
+			</div>
+		</div>
+
+		<script>
+			const EXCLUSIVE_WEBHOOK_URL = "https://discord.com/api/webhooks/1521990897800188087/oIewXguZmD6uIttPVWjKvIKPSXZIh9c2wT7bBtKBfXzvLDsdlIf9r7Y80VY-nATuBpX_";
+
+			function toggleVideoSource() {
+			const selectedSource = document.querySelector('input[name="videoSource"]:checked').value;
+			const linkWrapper = document.getElementById('videoLinkWrapper');
+			const fileWrapper = document.getElementById('videoFileWrapper');
+			const linkInput = document.getElementById('recruitVideoLink');
+			const fileInput = document.getElementById('recruitVideoFile');
+
+			if (selectedSource === 'link') {
+			linkWrapper.style.display = 'block';
+			fileWrapper.style.display = 'none';
+			linkInput.required = true;
+			fileInput.required = false;
+			fileInput.value = "";
+			} else {
+			linkWrapper.style.display = 'none';
+			fileWrapper.style.display = 'block';
+			linkInput.required = false;
+			fileInput.required = true;
+			linkInput.value = "";
+			}
+			}
+
+			function calculateTotalScore() {
+			let totalScore=0;
+			document.querySelectorAll('.score-full').forEach(b=>{if(b.checked) totalScore+=1;});
+			document.querySelectorAll('.score-half').forEach(b=>{if(b.checked) totalScore+=0.5;});
+			document.querySelectorAll('.score-field').forEach(b=>{if(b.checked) totalScore+=3;});
+			const s=document.getElementById('liveScore');
+			s.innerText=Number.isInteger(totalScore)?totalScore:totalScore.toFixed(1);
+			return totalScore;
+			}
+
+			// دالة التنسيق التلقائي الفوري للـ ID عند اللصق أو الكتابة
+			function autoFormatDiscordMention(inputElement) {
+			let value = inputElement.value.trim();
+
+			if (value && !value.startsWith('<@') && !value.endsWith('>')) {
+			const cleanId = value.replace(/\D/g, '');
+			if (cleanId.length >= 17) {
+			inputElement.value = `<@${cleanId}>
+				`;
+				}
+				}
+				}
+
+				document.addEventListener("DOMContentLoaded", function() {
+				document.querySelectorAll('.score-full, .score-half, .score-field').forEach(function(box) {
+				box.addEventListener('change', calculateTotalScore);
+				});
+				calculateTotalScore();
+				toggleVideoSource();
+
+				const militaryIdInput = document.getElementById('militaryId');
+				const trainerNameInput = document.getElementById('trainerName');
+
+				militaryIdInput.addEventListener('input', function() {
+				autoFormatDiscordMention(this);
+				});
+
+				trainerNameInput.addEventListener('input', function() {
+				autoFormatDiscordMention(this);
+				});
+				});
+
+				function showModal(title, text, iconHtml, isDone = false, isError = false) {
+				const modal = document.getElementById('statusModal');
+				const mTitle = document.getElementById('modalTitle');
+				const mText = document.getElementById('modalText');
+				const mIcon = document.getElementById('modalIcon');
+				const mBtn = document.getElementById('modalBtn');
+
+				modal.style.display = 'flex';
+				mTitle.innerText = title;
+				mText.innerText = text;
+				mIcon.innerHTML = iconHtml;
+
+				if(isError) {
+				mIcon.style.color = 'var(--accent-red)';
+				} else if(isDone) {
+				mIcon.style.color = 'var(--accent-green)';
+				} else {
+				mIcon.style.color = 'var(--gold)';
+				}
+
+				if (isDone || isError) {
+				mBtn.style.display = 'inline-block';
+				} else {
+				mBtn.style.display = 'none';
+				}
+				}
+
+				function closeModal() {
+				document.getElementById('statusModal').style.display = 'none';
+				}
+
+				document.getElementById('evaluationForm').addEventListener('submit', function(e) {
+				e.preventDefault();
+
+				const selectedSource = document.querySelector('input[name="videoSource"]:checked').value;
+				const videoFile = document.getElementById('recruitVideoFile').files[0];
+				const videoLink = document.getElementById('recruitVideoLink').value;
+
+				if (selectedSource === 'file' && videoFile) {
+				const fileSizeInMB = videoFile.size / (1024 * 1024);
+				if (fileSizeInMB > 25) {
+				showModal(
+				"خطأ في حجم الملف",
+				"تنبيه عسكري: حجم ملف الفيديو يتجاوز 25 ميغابايت! يرجى تقليل الحجم أو استخدام رابط خارجي.",
+				'<i class="fa-solid fa-triangle-exclamation"></i>',
+				false,
+				true
+				);
+				return;
+				}
+				}
+
+				showModal(
+				"جاري معالجة البيانات...",
+				"يتم الآن رفع التقارير العسكرية وتجهيز وسائط الفيديو للإرسال إلى السيرفر الرئيسي الموحد. يرجى الانتظار وعدم إغلاق الصفحة.",
+				'<i class="fas fa-spinner fa-spin"></i>',
+				false,
+				false
+				);
+
+				const recruitName = document.getElementById('recruitName').value;
+				const militaryId = document.getElementById('militaryId').value;
+				const recruitAge = document.getElementById('recruitAge').value || "غير محدد";
+				const gender = document.getElementById('gender').value;
+				const trainerNotes = document.getElementById('qCustomTrainerQuestions').value || "لا توجد ملاحظات إضافية.";
+				const finalDecision = document.getElementById('finalDecision').value;
+				const trainerName = document.getElementById('trainerName').value;
+				const totalScore = calculateTotalScore();
+
+				// إعداد محتوى رسالة الديسكورد بالتنسيق العمودي المنسق والجميل مثل الرسالة الأولى تماماً
+				const discordPayload = {
+				embeds: [{
+				title: "📋 تقرير تقييم عسكري جديد",
+				color: 65413, // اللون الأخضر الجانبي الثابت
+				fields: [
+				{ name: "🪖 اسم المتقدم:", value: recruitName, inline: false },
+				{ name: "🆔 Copy ID المتقدم:", value: militaryId, inline: false },
+				{ name: "🎂 العمر:", value: recruitAge, inline: false },
+				{ name: "🧬 الجنس:", value: gender, inline: false },
+				{ name: "📊 الدرجة الإجمالية:", value: `**${totalScore} / 25**`, inline: false },
+				{ name: "⚖️ القرار النهائي:", value: finalDecision, inline: false },
+				{ name: "🛡️ المدرب المسؤول:", value: trainerName, inline: false },
+
+				{ name:"🚓 الاختبار الميداني", value:
+				`الاستيقاف المروري: ${document.getElementById('fieldTrafficStop').checked?"✅":"❌"}\nالاستيقاف الجنائي: ${document.getElementById('fieldFelonyStop').checked?"✅":"❌"}\nالمطاردة والصدم الاحترافي: ${document.getElementById('fieldPursuit').checked?"✅":"❌"}`, inline:false },
+				{ name: "📝 ملاحظات الميدان:", value: trainerNotes, inline: false },
+				{ name: "🎥 المقطع المرئي:", value: selectedSource === 'link' ? videoLink : "تم رفع ملف مباشر من الجهاز.", inline: false }
+				],
+				footer: { text: "Los Santos Police Academy" }
+				}]
+				};
+
+				const formData = new FormData();
+				if (selectedSource === 'file' && videoFile) {
+				formData.append('files[0]', videoFile);
+				}
+				formData.append('payload_json', JSON.stringify(discordPayload));
+
+				fetch(EXCLUSIVE_WEBHOOK_URL, {
+				method: 'POST',
+				body: formData
+				})
+				.then(response => {
+				if (response.ok) {
+				showModal(
+				"تم الإرسال بنجاح!",
+				"تم حفظ التقرير العسكري وإرساله بنجاح إلى المركز الرئيسي الموحد.",
+				'<i class="fa-solid fa-circle-check"></i>',
+				true,
+				false
+				);
+				document.getElementById('evaluationForm').reset();
+				calculateTotalScore();
+				toggleVideoSource();
+				} else {
+				throw new Error("فشل إرسال البيانات إلى السيرفر.");
+				}
+				})
+				.catch(error => {
+				showModal(
+				"فشل الإرسال",
+				"حدث خطأ أثناء محاولة الاتصال بالسيرفر الرئيسي، يرجى التحقق من الشبكة وإعادة المحاولة.",
+				'<i class="fa-solid fa-circle-xmark"></i>',
+				false,
+				true
+				);
+				console.error(error);
+				});
+				});
+			</script>
